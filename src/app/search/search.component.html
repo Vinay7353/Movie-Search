@@ -1,0 +1,40 @@
+
+<form class="example" action="/action_page.php">
+    <input type="text" placeholder="Search.." name="search" id="search-data"  [(ngModel)]="searchValue">
+    <button type="submit" (click)="search()"><i class="fa fa-search"></i></button>
+</form>
+
+
+<div>
+<div  *ngIf="dataFlag ==true">
+<div class="main-div" *ngFor="let item of movieArr; let j = index">
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.Title}}</mat-card-title>
+      <mat-card-subtitle>{{item.Type}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src={{item.Poster}} alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <h2>{{item.Title}}</h2>
+      <p>{{item.imdbID}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>More Info</button>
+      <button mat-button>Book Ticket</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+</div>
+
+
+
+<div *ngIf="dataFlag ==false"> 
+    <mat-card> No Data found start search to populate the result</mat-card>
+</div>
+</div>
+
+
+
+ 
+
