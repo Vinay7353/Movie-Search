@@ -28,10 +28,17 @@ export class SearchComponent implements OnInit {
       alert('Please enter the search data');
     }else{
       this.searchService.getSearchData(this.searchValue).subscribe(data => {
-        this.dataFlag = true;
-        this.movieArr = data['Search'];
-        this.totalLength = data['totalResults'];
-        console.log(this.movieArr);
+        console.log(data)
+        if(data['Error'] == "Movie not found!"){
+          this.dataFlag = false;
+          document.getElementById('alert-card').innerHTML = 'Movie not found!'
+        }else{
+          this.dataFlag = true;
+          this.movieArr = data['Search'];
+          this.totalLength = data['totalResults'];
+          console.log(this.movieArr);
+        }
+
       },
         err => {
           console.log(err);
